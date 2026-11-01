@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.aop.target.LazyInitTargetSource;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,6 +22,6 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
+    transient private List<Question>questions; //using transient won't save this in db
 }
